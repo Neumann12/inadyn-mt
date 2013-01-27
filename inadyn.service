@@ -1,0 +1,10 @@
+[Unit]
+Description=Inadyn-mt, register an IP Address to a dynamic DNS provider
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/inadyn
+
+[Install]
+WantedBy=multi-user.target
