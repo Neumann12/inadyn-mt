@@ -29,7 +29,7 @@ should then fill in /etc/inadyn.conf with the appropriate detail
 
 %prep
 %setup -q -n %{name}.v.0%{version}
-%patch1 -p1
+%patch -P1 -p1
 %{__rm} -r bin
 
 %build
