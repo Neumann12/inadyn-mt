@@ -1,0 +1,27 @@
+name: Build inadyn-mt
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y build-essential autoconf automake libtool
+
+    - name: Build inadyn-mt
+      run: |
+        ./autogen.sh
+        ./configure --enable-static
+        make
+
+    - name: Upload binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: inadyn-mt-binary
+        path: src/inadyn
